@@ -46,6 +46,9 @@ WHERE YEAR(Reservation_Date) = 2018;
 -- 5. What is the most commonly booked room type?  
 SELECT MAX(room_type_reserved) AS Commonly_booked_room FROM hotel_reservation_dataset;
 
+-- 6. How many reservations fall on a weekend (no_of_weekend_nights > 0)? 
+SELECT COUNT(no_of_week_nights) AS weekend_reservation FROM hotel_reservation_dataset
+WHERE no_of_week_nights > 0;
 
 
 SELECT * FROM hotel_reservation_dataset;
