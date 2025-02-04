@@ -66,4 +66,8 @@ WHERE booking_status = "Confirmed";
 -- 10. What is the total number of adults and children across all reservations?  
 SELECT SUM(no_of_adults) AS total_no_adults, SUM(no_of_children) AS total_no_children FROM hotel_reservation_dataset;
 
+-- 11. What is the average number of weekend nights for reservations involving children?  
+SELECT AVG(no_of_week_nights) AS avg_weekend_nights FROM hotel_reservation_dataset
+WHERE no_of_children > 0;
+
 SELECT * FROM hotel_reservation_dataset;
