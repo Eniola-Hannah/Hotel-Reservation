@@ -36,6 +36,13 @@ ADD COLUMN Reservation_Date DATE;
 UPDATE hotel_reservation_dataset
 SET Reservation_Date = DATE_SUB(arrival_date, INTERVAL lead_time DAY);
 
+-- Number of reservation in 2017 using the left string method
+SELECT COUNT(Reservation_Date) AS 2017_reservation FROM hotel_reservation_dataset
+WHERE LEFT(Reservation_Date, 4) = 2017;
+-- Number of reservation in 2018 using the Year method in DateTime
+SELECT COUNT(Reservation_Date) AS 2018_reservation FROM hotel_reservation_dataset
+WHERE YEAR(Reservation_Date) = 2018;
+
 
 
 SELECT * FROM hotel_reservation_dataset;
