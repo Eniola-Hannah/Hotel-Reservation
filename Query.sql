@@ -28,3 +28,6 @@ SET SQL_SAFE_UPDATES =0;
 
 UPDATE hotel_reservation_dataset
 SET arrival_date = STR_TO_DATE(arrival_date, "%d-%m-%YYYY");
+ALTER TABLE hotel_reservation_dataset
+MODIFY COLUMN arrival_date DATE;
+
