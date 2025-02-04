@@ -13,3 +13,11 @@ SELECT MAX(type_of_meal_plan) FROM hotel_reservation_dataset;     -- 'Not select
 
 SELECT MAX(type_of_meal_plan) FROM hotel_reservation_dataset
 WHERE type_of_meal_plan IN ("Meal Plan 1", "Meal Plan 2");
+
+-- 3. What is the average price per room for reservations involving children?  
+SELECT avg_price_per_room FROM hotel_reservation_dataset
+WHERE no_of_children != 0;
+
+-- SELECT no_of_children, SUM(avg_price_per_room) FROM hotel_reservation_dataset
+-- WHERE no_of_children != 0
+-- GROUP BY no_of_children;
