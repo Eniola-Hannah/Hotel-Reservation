@@ -56,4 +56,11 @@ SELECT MAX(lead_time) AS highest_leadtime, MIN(lead_time) AS lowest_leadtime FRO
 -- 8. What is the most common market segment type for reservations?  
 SELECT MAX(market_segment_type) AS common_market_segment FROM hotel_reservation_dataset;
 
+-- 9. How many reservations have a booking status of "Confirmed"?  
+SELECT COUNT(booking_status) AS confirmed_booking_status FROM hotel_reservation_dataset
+WHERE booking_status = "Confirmed";
+
+-- SELECT COUNT(booking_status) AS confirmed_booking_status FROM hotel_reservation_dataset
+-- WHERE booking_status = "Canceled";
+
 SELECT * FROM hotel_reservation_dataset;
