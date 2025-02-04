@@ -43,6 +43,9 @@ WHERE LEFT(Reservation_Date, 4) = 2017;
 SELECT COUNT(Reservation_Date) AS 2018_reservation FROM hotel_reservation_dataset
 WHERE YEAR(Reservation_Date) = 2018;
 
+-- 5. What is the most commonly booked room type?  
+SELECT MAX(room_type_reserved) AS Commonly_booked_room FROM hotel_reservation_dataset;
+
 
 
 SELECT * FROM hotel_reservation_dataset;
