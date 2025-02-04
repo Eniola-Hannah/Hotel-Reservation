@@ -70,4 +70,15 @@ SELECT SUM(no_of_adults) AS total_no_adults, SUM(no_of_children) AS total_no_chi
 SELECT AVG(no_of_week_nights) AS avg_weekend_nights FROM hotel_reservation_dataset
 WHERE no_of_children > 0;
 
+-- 12. How many reservations were made in each month of the year? 
+SELECT MONTH(Reservation_Date) AS month_of_the_year, COUNT(MONTH(Reservation_Date)) AS total_reservation FROM hotel_reservation_dataset
+GROUP BY month_of_the_year
+ORDER BY month_of_the_year;
+
+SELECT MONTHNAME(Reservation_Date) AS month_of_the_year, COUNT(MONTH(Reservation_Date)) AS total_reservation FROM hotel_reservation_dataset
+GROUP BY month_of_the_year
+-- ORDER BY month_of_the_year
+;
+
+
 SELECT * FROM hotel_reservation_dataset;
