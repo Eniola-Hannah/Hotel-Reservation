@@ -21,3 +21,10 @@ WHERE no_of_children != 0;
 -- SELECT no_of_children, SUM(avg_price_per_room) FROM hotel_reservation_dataset
 -- WHERE no_of_children != 0
 -- GROUP BY no_of_children;
+
+
+-- 4. How many reservations were made for the year 20XX (replace XX with the desired year)?  
+SET SQL_SAFE_UPDATES =0;
+
+UPDATE hotel_reservation_dataset
+SET arrival_date = STR_TO_DATE(arrival_date, "%d-%m-%YYYY");
