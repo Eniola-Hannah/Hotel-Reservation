@@ -31,3 +31,5 @@ SET arrival_date = STR_TO_DATE(arrival_date, "%d-%m-%YYYY");
 ALTER TABLE hotel_reservation_dataset
 MODIFY COLUMN arrival_date DATE;
 
+ALTER TABLE hotel_reservation_dataset
+ADD COLUMN Reservation_Date DATE;
