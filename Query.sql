@@ -63,4 +63,7 @@ WHERE booking_status = "Confirmed";
 -- SELECT COUNT(booking_status) AS confirmed_booking_status FROM hotel_reservation_dataset
 -- WHERE booking_status = "Canceled";
 
+-- 10. What is the total number of adults and children across all reservations?  
+SELECT SUM(no_of_adults) AS total_no_adults, SUM(no_of_children) AS total_no_children FROM hotel_reservation_dataset;
+
 SELECT * FROM hotel_reservation_dataset;
