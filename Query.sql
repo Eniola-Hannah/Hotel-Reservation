@@ -50,5 +50,9 @@ SELECT MAX(room_type_reserved) AS Commonly_booked_room FROM hotel_reservation_da
 SELECT COUNT(no_of_week_nights) AS weekend_reservation FROM hotel_reservation_dataset
 WHERE no_of_week_nights > 0;
 
+-- 7. What is the highest and lowest lead time for reservations?  
+SELECT MAX(lead_time) AS highest_leadtime, MIN(lead_time) AS lowest_leadtime FROM hotel_reservation_dataset;
+
+
 
 SELECT * FROM hotel_reservation_dataset;
