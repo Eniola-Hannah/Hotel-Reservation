@@ -53,6 +53,7 @@ WHERE no_of_week_nights > 0;
 -- 7. What is the highest and lowest lead time for reservations?  
 SELECT MAX(lead_time) AS highest_leadtime, MIN(lead_time) AS lowest_leadtime FROM hotel_reservation_dataset;
 
-
+-- 8. What is the most common market segment type for reservations?  
+SELECT MAX(market_segment_type) AS common_market_segment FROM hotel_reservation_dataset;
 
 SELECT * FROM hotel_reservation_dataset;
