@@ -33,3 +33,9 @@ MODIFY COLUMN arrival_date DATE;
 
 ALTER TABLE hotel_reservation_dataset
 ADD COLUMN Reservation_Date DATE;
+UPDATE hotel_reservation_dataset
+SET Reservation_Date = DATE_SUB(arrival_date, INTERVAL lead_time DAY);
+
+
+
+SELECT * FROM hotel_reservation_dataset;
