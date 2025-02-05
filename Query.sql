@@ -90,5 +90,9 @@ WHERE no_of_children > 0
 GROUP BY room_type_reserved, avg_price_per_room
 ORDER BY total_reservation DESC LIMIT 1;
 
+-- 15. Find the market segment type that generates the highest average price per room.  
+SELECT market_segment_type, MAX(avg_price_per_room) AS highest_avg_price FROM hotel_reservation_dataset
+GROUP BY market_segment_type
+ORDER BY highest_avg_price DESC LIMIT 1;
 
 SELECT * FROM hotel_reservation_dataset;
