@@ -84,4 +84,11 @@ GROUP BY month_of_the_year
 SELECT room_type_reserved,  AVG(no_of_week_nights) + AVG(no_of_weekend_nights) AS avg_number_of_nights FROM hotel_reservation_dataset
 GROUP BY room_type_reserved;
 
+-- 14. For reservations involving children, what is the most common room type, and what is the average price for that room type? 
+SELECT room_type_reserved, COUNT(room_type_reserved) AS total_reservation, avg_price_per_room FROM hotel_reservation_dataset
+WHERE no_of_children > 0
+GROUP BY room_type_reserved, avg_price_per_room
+ORDER BY total_reservation DESC LIMIT 1;
+
+
 SELECT * FROM hotel_reservation_dataset;
