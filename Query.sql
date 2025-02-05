@@ -15,7 +15,7 @@ GROUP BY type_of_meal_plan
 ORDER BY most_popular_meal_plan DESC LIMIT 1;
 
 -- 3. What is the average price per room for reservations involving children?  
-SELECT avg_price_per_room FROM hotel_reservation_dataset
+SELECT round(avg(avg_price_per_room)) FROM hotel_reservation_dataset
 WHERE no_of_children != 0;
 
 -- 4. How many reservations were made for the year 20XX (replace XX with the desired year)?  
@@ -43,8 +43,8 @@ WHERE YEAR(Reservation_Date) = 2018;
 SELECT MAX(room_type_reserved) AS Commonly_booked_room FROM hotel_reservation_dataset;
 
 -- 6. How many reservations fall on a weekend (no_of_weekend_nights > 0)? 
-SELECT COUNT(no_of_week_nights) AS weekend_reservation FROM hotel_reservation_dataset
-WHERE no_of_week_nights > 0;
+SELECT COUNT(no_of_weekend_nights) AS weekend_reservation FROM hotel_reservation_dataset
+WHERE no_of_weekend_nights > 0;
 
 -- 7. What is the highest and lowest lead time for reservations?  
 SELECT MAX(lead_time) AS highest_leadtime, MIN(lead_time) AS lowest_leadtime FROM hotel_reservation_dataset;
@@ -60,10 +60,10 @@ SELECT COUNT(booking_status) AS confirmed_booking_status FROM hotel_reservation_
 WHERE booking_status = "Not_Canceled";
 
 -- 10. What is the total number of adults and children across all reservations?  
-SELECT SUM(no_of_adults) AS total_no_adults, SUM(no_of_children) AS total_no_children FROM hotel_reservation_dataset;
+SELECT SUM(no_of_adults) + SUM(no_of_children) AS total_children_et_adult FROM hotel_reservation_dataset;
 
 -- 11. What is the average number of weekend nights for reservations involving children?  
-SELECT AVG(no_of_week_nights) AS avg_weekend_nights FROM hotel_reservation_dataset
+SELECT AVG(no_of_weekend_nights) AS avg_weekend_nights FROM hotel_reservation_dataset
 WHERE no_of_children > 0;
 
 -- 12. How many reservations were made in each month of the year? 
@@ -71,23 +71,22 @@ SELECT MONTH(Reservation_Date) AS month_of_the_year, COUNT(MONTH(Reservation_Dat
 GROUP BY month_of_the_year
 ORDER BY month_of_the_year;
 
-SELECT MONTHNAME(Reservation_Date) AS month_of_the_year, COUNT(MONTH(Reservation_Date)) AS total_reservation FROM hotel_reservation_dataset
-GROUP BY month_of_the_year
--- ORDER BY month_of_the_year
-;
+SELECT MONTHNAME(Reservation_Date) AS mnt_name, MONTH(Reservation_Date) AS mnt_number, COUNT(Reservation_Date) FROM hotel_reservation_dataset
+GROUP BY mnt_name, mnt_number
+ORDER BY mnt_number;
 
 -- 13. What is the average number of nights (both weekend and weekday) spent by guests for each room type?  
 SELECT room_type_reserved,  AVG(no_of_week_nights) + AVG(no_of_weekend_nights) AS avg_number_of_nights FROM hotel_reservation_dataset
 GROUP BY room_type_reserved;
 
 -- 14. For reservations involving children, what is the most common room type, and what is the average price for that room type? 
-SELECT room_type_reserved, COUNT(room_type_reserved) AS total_reservation, avg_price_per_room FROM hotel_reservation_dataset
+SELECT room_type_reserved, COUNT(room_type_reserved) AS total_reservation, avg(avg_price_per_room) FROM hotel_reservation_dataset
 WHERE no_of_children > 0
 GROUP BY room_type_reserved, avg_price_per_room
 ORDER BY total_reservation DESC LIMIT 1;
 
 -- 15. Find the market segment type that generates the highest average price per room.  
-SELECT market_segment_type, MAX(avg_price_per_room) AS highest_avg_price FROM hotel_reservation_dataset
+SELECT market_segment_type, AVG(avg_price_per_room) AS highest_avg_price FROM hotel_reservation_dataset
 GROUP BY market_segment_type
 ORDER BY highest_avg_price DESC LIMIT 1;
 
