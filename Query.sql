@@ -34,6 +34,7 @@ SET Reservation_Date = DATE_SUB(arrival_date, INTERVAL lead_time DAY);
 -- Number of reservation in 2017 using the left string method
 SELECT COUNT(Reservation_Date) AS 2017_reservation FROM hotel_reservation_dataset
 WHERE LEFT(Reservation_Date, 4) = 2017;
+
 -- Number of reservation in 2018 using the Year method in DateTime
 SELECT COUNT(Reservation_Date) AS 2018_reservation FROM hotel_reservation_dataset
 WHERE YEAR(Reservation_Date) = 2018;
@@ -55,8 +56,8 @@ SELECT MAX(market_segment_type) AS common_market_segment FROM hotel_reservation_
 SELECT COUNT(booking_status) AS confirmed_booking_status FROM hotel_reservation_dataset
 WHERE booking_status = "Confirmed";
 
--- SELECT COUNT(booking_status) AS confirmed_booking_status FROM hotel_reservation_dataset
--- WHERE booking_status = "Canceled";
+SELECT COUNT(booking_status) AS confirmed_booking_status FROM hotel_reservation_dataset
+WHERE booking_status = "Not_Canceled";
 
 -- 10. What is the total number of adults and children across all reservations?  
 SELECT SUM(no_of_adults) AS total_no_adults, SUM(no_of_children) AS total_no_children FROM hotel_reservation_dataset;
